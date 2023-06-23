@@ -11,7 +11,7 @@
 5. `npm install @types/react-bootstrap`  
    typescript needs accesss to the type description of react-bootstrap to work as expected and provide intellisense/compilation
 6. `npm install react-router-dom @types/react-router-dom`  
-   Install client side routing with react-router
+   Install client side routing with react-router. Wrap `<App />` with BrowserRouter in index.tsx. Additionally make sure to wrap
 
 
 

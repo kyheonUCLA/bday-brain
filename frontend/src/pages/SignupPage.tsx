@@ -8,7 +8,7 @@ import FormButton from "../components/FormButton"
 import FormInput from "../components/FormInput"
 import HorizontilNavbar from "../components/HorizontilNavbar"
 
-import { FormError } from "./LoginPage"
+import { FormError } from "../types/interface"
 
 
 interface SignupFormState {

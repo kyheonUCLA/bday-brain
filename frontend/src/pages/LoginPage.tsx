@@ -1,27 +1,18 @@
 
 import { FC, MouseEvent, useState, useEffect } from "react"
 
-import {Form, Button} from "react-bootstrap"
-
+// Custom imports
 import HorizontilNavbar from "../components/HorizontilNavbar"
 import FormInput from "../components/FormInput"
 import FormButton from "../components/FormButton"
+import { FormError, AuthData } from "../types/interface"
 
 interface LoginFormState {
   username: string
   password: string
 }
 
-interface AuthData {
-	code: number
-	message: string
-	status: boolean
-}
 
-export interface FormError {
-  code: number
-  message: string
-}
 
 
 const LoginPage: FC = () => {

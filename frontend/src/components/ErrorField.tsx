@@ -1,14 +1,13 @@
 import { FC } from "react"
 
 
-
-import { FormError } from "../pages/LoginPage"
+import { FormError } from "../types/interface"
 
 interface ErrorFieldProps {
 	error: FormError
 }
 
-const ErrorField: FC<any> = (props) => {
+const ErrorField: FC<ErrorFieldProps> = (props) => {
 	return (
 		<div>
 			

@@ -1,10 +1,6 @@
 import  { useEffect, useState, FC } from 'react';
 
-interface TestData {
-  body: string;
-  id: number;
-  message: string;
-}
+import { TestData } from "../types/interface"
 
 const MyComponent: FC = () => {
   const [testData, setTestData] = useState<TestData | null>(null);

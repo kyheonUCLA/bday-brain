@@ -4,13 +4,15 @@ import { FC } from "react";
 import { Routes, Route } from 'react-router-dom';
 
 // custom imports
+import HomePage from './pages/HomePage';
 import LoginPage from './pages/LoginPage';
 import SignupPage from './pages/SignupPage';
+import ProfilePage from './pages/ProfilePage';
 
 const App: FC = () => {
   return (
   <Routes>
-    <Route path='/' element={<LoginPage />} />
+    <Route path='/' element={<ProfilePage />} />
     <Route path='/login' element={<LoginPage />} />
     <Route path='/signup' element={<SignupPage />} />
     <Route path='/test' element={<MyComponent />} />
