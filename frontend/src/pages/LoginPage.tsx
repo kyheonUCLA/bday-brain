@@ -1,5 +1,5 @@
 
-import { FC, MouseEvent } from "react"
+import { FC, MouseEvent, useState, useEffect } from "react"
 
 import {Form, Button} from "react-bootstrap"
 
@@ -7,12 +7,62 @@ import HorizontilNavbar from "../components/HorizontilNavbar"
 import FormInput from "../components/FormInput"
 import FormButton from "../components/FormButton"
 
+interface LoginFormState {
+  username: string
+  password: string
+}
+
+interface AuthData {
+	code: number
+	message: string
+	status: boolean
+}
+
+export interface FormError {
+  code: number
+  message: string
+}
+
 
 const LoginPage: FC = () => {
+  const [formState, setFormState] = useState<LoginFormState>({username: "", password: ""})
+  const [formErrors, setFormErrors] = useState<FormError[]>([])
+
   const onLoginBtnClick = (e: MouseEvent<HTMLButtonElement>) => {
 		e.preventDefault()
-		console.log(e.screenX, e.screenY)
+    const usernameElement = document.getElementById('username-input') as HTMLInputElement
+    const passwordElement = document.getElementById('password-input') as HTMLInputElement
+    setFormState({
+      username: usernameElement.value.trim(), 
+      password: passwordElement.value.trim()
+    })
+    fetchAuthData()
 	}
+
+  const fetchAuthData = async (): Promise<void> => {
+    try {
+      const response = await fetch('http://localhost:5050/app/api/auth/')
+      const jsonData: AuthData = await response.json()
+      console.log(jsonData)
+    } catch (error) {
+      console.error('Error fetching test data:');
+    }
+  };
+
+  const getLoginErrors = () => {
+		const errors: FormError[] = []
+		if (formState.username.length < 1 || formState.password.length < 1) {
+			errors.push({code: 2, message: "Input fields cannot be left blank!"})
+		}
+		return errors
+	}
+
+  useEffect( () => {
+    console.log(formState)
+    formErrors.length > 0 ? console.error(formErrors[0]) : console.log("No errors in Login") 
+    
+    setFormErrors(getLoginErrors())
+  }, [formState])
 
 
   return (

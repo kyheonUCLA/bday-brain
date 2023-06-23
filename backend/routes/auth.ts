@@ -1,9 +1,9 @@
-import express from 'express';
-import testController from '../controllers/testController';
+import express from 'express'
+import authController from '../controllers/authController'
 
 const authRouter = express.Router();
 
-//authRouter.get('/', testController.getExample);
+authRouter.get('/', authController.getAuthData);
 //authRouter.post('/', testController.createExample);
 
 export default authRouter;
