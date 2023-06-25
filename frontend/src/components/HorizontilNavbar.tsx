@@ -24,6 +24,7 @@ const HorizontilNavbar: FC<HorizontilNavbarProps> = (props) => {
 						<span className="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">Wednesday</span>
 						</Link>
 					</li>
+					<div className="flex-grow"></div>
 					{
 						tabs?.map( (tab, idx) => {return (
 						<li key={idx}>

@@ -71,9 +71,7 @@ const ProfilePage: FC = () => {
 		<div id="profile-page-div" className="flex flex-col items-center bg-yellow-500">
 			{
 				friends.map((friend, idx) => {return (
-					<div className="mb-3">
-						<ViewCard profile={friend}/>
-					</div>
+						<ViewCard key={idx} profile={friend}/>
 				)})
 			}
 		</div>
