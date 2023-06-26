@@ -5,12 +5,13 @@ import EditButton from "./EditButton"
 import { FriendProfile } from "../types/interface"
 
 interface ViewCardProps {
-    profile?: FriendProfile //make sure to make it required later
+  profile: FriendProfile //make sure to make it required later
 }
 
 const ViewCard: FC<ViewCardProps> = (props) => {
   
 	const {profile} = props 
+
 
   return (
     <div className="flex mb-3 flex-col items-center bg-white border border-gray-400 rounded-lg shadow md:flex-row md:w-[800px] hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700">
@@ -26,9 +27,7 @@ const ViewCard: FC<ViewCardProps> = (props) => {
       </div>
 
 			<div className="flex-grow"></div>
-      <div className="h-52">
-        <button className="h-full bg-gray-400 rounded-lg hover:bg-gray-600">EDIT</button>
-      </div>
+			<EditButton  />
     </div>
   )
 }

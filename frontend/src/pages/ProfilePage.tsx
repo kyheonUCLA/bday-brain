@@ -1,16 +1,17 @@
 import { FC, useState, useEffect } from "react"
 
 import ViewCard from "../components/ViewCard"
-import { UserProfile } from "../types/interface"
+import { FriendProfile, UserProfile } from "../types/interface"
 
-const friends = [
+const friendsExample = [
   {
     name: "Jon Doe",
     phone: "(555) 471-1234",
     pic: "https://www.gravatar.com/avatar/2c7d99fe281ecd3bcd65ab915bac6dd5?s=250",
     birthday: new Date("4/23/1998"),
     bio: "UCLA, Computer Science Engineering",
-    age: 21	
+    age: 21,
+    editState: false
   },
   {
     name: "Nirvana Shrinivasen",
@@ -18,7 +19,8 @@ const friends = [
     pic: "https://i.pravatar.cc/250?u=mail@ashallendesign.co.uk",
     birthday: new Date("1/3/2002"),
     bio: "USC, Scientific Poetry",
-    age: 19
+    age: 19,
+    editState: false
   },
   {
     name: "Alice Smith",
@@ -26,7 +28,8 @@ const friends = [
     pic: "https://i.pravatar.cc/250?u=bob",
     birthday: new Date("9/12/1995"),
     bio: "Stanford, Business Administration",
-    age: 26
+    age: 26,
+    editState: false
   },
   {
     name: "Bob Johnson",
@@ -34,7 +37,8 @@ const friends = [
     pic: "https://placebeard.it/250/250",
     birthday: new Date("6/5/1990"),
     bio: "Harvard, Law",
-    age: 31
+    age: 31,
+    editState: false
   },
   {
     name: "Emma Thompson",
@@ -42,7 +46,8 @@ const friends = [
     pic: "https://i.pravatar.cc/250?u=emma",
     birthday: new Date("2/18/1993"),
     bio: "Oxford, Literature",
-    age: 28
+    age: 28,
+    editState: false
   },
   {
     name: "Michael Anderson",
@@ -50,21 +55,20 @@ const friends = [
     pic: "https://i.pravatar.cc/250/250",
     birthday: new Date("11/30/1985"),
     bio: "MIT, Computer Engineering",
-    age: 36
+    age: 36,
+    editState: false
   }
 ];
 
 
 const ProfilePage: FC = () => {
-	const [profile, setProfile] = useState<UserProfile>() //need to write a function that fetches data from server
+	const [user, setUser] = useState<UserProfile>() //need to write a function that fetches data from server
+  const [friends, setFriends] = useState<FriendProfile[]>(friendsExample) //
+  
 	
-	
-	
-	
-
-	console.log(friends.length)
 	useEffect(() => {
-	}, [profile])
+    setFriends(friendsExample)
+	}, [user])
 
 
 	return (
