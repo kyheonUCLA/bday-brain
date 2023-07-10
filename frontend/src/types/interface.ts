@@ -22,7 +22,7 @@ export interface FriendProfile {
 		snapchat: boolean
 		instagram: boolean
 	}
-	editState: boolean
+	textUser: boolean
 }
 
 

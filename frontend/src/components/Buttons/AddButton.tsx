@@ -1,5 +1,4 @@
 import { FC, MouseEventHandler } from "react"
-import { FriendProfile } from "../../types/interface"
 
 interface AddButtonProps {
   callback: MouseEventHandler

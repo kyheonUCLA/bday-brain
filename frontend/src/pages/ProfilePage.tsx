@@ -13,7 +13,7 @@ const friendsExample = [
     birthday: new Date("4/23/1998"),
     bio: "UCLA, Computer Science Engineering",
     age: 21,
-    editState: false
+    textUser: false
   },
   {
     name: "Nirvana Shrinivasen",
@@ -22,7 +22,7 @@ const friendsExample = [
     birthday: new Date("1/3/2002"),
     bio: "USC, Scientific Poetry",
     age: 19,
-    editState: false
+    textUser: true
   },
   {
     name: "Alice Smith",
@@ -31,7 +31,7 @@ const friendsExample = [
     birthday: new Date("9/12/1995"),
     bio: "Stanford, Business Administration",
     age: 26,
-    editState: false
+    textUser: true
   },
   {
     name: "Bob Johnson",
@@ -40,7 +40,7 @@ const friendsExample = [
     birthday: new Date("6/5/1990"),
     bio: "Harvard, Law",
     age: 31,
-    editState: false
+    textUser: false
   },
   {
     name: "Emma Thompson",
@@ -49,7 +49,7 @@ const friendsExample = [
     birthday: new Date("2/18/1993"),
     bio: "Oxford, Literature",
     age: 28,
-    editState: false
+    textUser: false
   },
   {
     name: "Michael Anderson",
@@ -58,7 +58,7 @@ const friendsExample = [
     birthday: new Date("11/30/1985"),
     bio: "MIT, Computer Engineering",
     age: 36,
-    editState: false
+    textUser: false
   }
 ];
 
@@ -75,21 +75,13 @@ const ProfilePage: FC = () => {
       birthday: new Date(),
       bio: "example",
       age: 0,
-      editState: false
+      textUser: true
     }
     setFriends( (prev) => ( [...prev, newFriend] ) )
   }
 
-  const t = [1, 2, 3, 4, 5, 6]
-  console.log(t.filter( (e, idx) => idx !== 4))
-
-  console.log(t.splice(3, 1))
-
   const onDeleteFriend = (id: number) => {
-    console.log(friends)
-    setFriends( (prev) => (prev.filter( (e,idx) => idx !== id)) )
-    console.log(friends.splice(id, 1))
-
+    setFriends( (prev) => (prev.filter( (e, idx) => idx !== id)) )
   }
 	
 	useEffect(() => {
@@ -99,6 +91,7 @@ const ProfilePage: FC = () => {
 
 	return (
 		<div id="profile-page-div" className="flex flex-col items-center bg-yellow-500">
+      <br></br>
       <FriendContext.Provider value={ {onDeleteFriend: onDeleteFriend} }>
 			{
 				friends.map((friend, idx) => {return (
