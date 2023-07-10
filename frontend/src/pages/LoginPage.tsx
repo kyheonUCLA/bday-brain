@@ -2,9 +2,9 @@
 import { FC, MouseEvent, useState, useEffect } from "react"
 
 // Custom imports
-import HorizontilNavbar from "../components/HorizontilNavbar"
+import HorizontilNavbar from "../components/Navbars/HorizontilNavbar"
 import FormInput from "../components/FormInput"
-import FormButton from "../components/FormButton"
+import FormButton from "../components/Buttons/FormButton"
 import { FormError, AuthData } from "../types/interface"
 
 interface LoginFormState {

@@ -1,7 +1,7 @@
 import { FC, useState, useEffect } from "react"
 
-import ViewCard from "../components/ViewCard"
 import { FriendProfile, UserProfile } from "../types/interface"
+import FriendCard from "../components/Cards/FriendCard";
 
 const friendsExample = [
   {
@@ -75,7 +75,7 @@ const ProfilePage: FC = () => {
 		<div id="profile-page-div" className="flex flex-col items-center bg-yellow-500">
 			{
 				friends.map((friend, idx) => {return (
-						<ViewCard key={idx} profile={friend}/>
+          <FriendCard key={idx} profile={friend}/>
 				)})
 			}
 		</div>

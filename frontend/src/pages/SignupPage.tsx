@@ -4,9 +4,9 @@ import { FC, MouseEvent, useState, useEffect } from "react"
 // api imports
 
 // custom imports
-import FormButton from "../components/FormButton"
+import FormButton from "../components/Buttons/FormButton"
 import FormInput from "../components/FormInput"
-import HorizontilNavbar from "../components/HorizontilNavbar"
+import HorizontilNavbar from "../components/Navbars/HorizontilNavbar"
 
 import { FormError } from "../types/interface"
 
