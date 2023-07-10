@@ -1,4 +1,5 @@
 import { FC, MouseEventHandler, MouseEvent } from "react"
+import FriendContext from "../../contexts/FriendContext"
 
 import { FriendProfile } from "../../types/interface"
 import EditButton from "./EditButton"
@@ -8,11 +9,12 @@ interface FriendButtonProps {
   profile: FriendProfile
   toggleState: MouseEventHandler
   state: boolean
+  id: number
 }
 
 
 const FriendButton: FC<FriendButtonProps> = (props) => {    
-  const {profile, state, toggleState} = props 
+  const {profile, state, toggleState, id} = props 
 
   const onEditClick = (e: MouseEvent) => {
     e.preventDefault()
@@ -38,7 +40,11 @@ const FriendButton: FC<FriendButtonProps> = (props) => {
     )}
 
     {state && ( 
-      <UpdateButton updateCallback={onUpdateClick} deleteCallback={onDeleteClick}></UpdateButton>
+      <FriendContext.Consumer>
+        {({ onDeleteFriend }) => (
+          <UpdateButton updateCallback={onUpdateClick} deleteCallback={(e: MouseEvent) => { onDeleteFriend(id); toggleState(e)}}></UpdateButton>      
+        )}
+      </FriendContext.Consumer>
     )}
     </>
   )

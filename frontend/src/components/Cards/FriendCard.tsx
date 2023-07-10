@@ -8,6 +8,7 @@ import FriendButton from "../Buttons/FriendButton"
 
 interface FriendCardProps {
   profile: FriendProfile
+  id: number
 }
 
 const FriendCard: FC<FriendCardProps> = (props) => {
@@ -21,7 +22,7 @@ const FriendCard: FC<FriendCardProps> = (props) => {
 
   const onEditClick = () => { setEditState(!editState )} //toggle between clicks
 
-  useEffect( ()=>{console.log(newProfile)}, [newProfile] )
+  //useEffect( ()=>{console.log(newProfile)}, [newProfile] )
 
   return (
     <div className="flex mb-3 flex-col items-center bg-white border border-gray-400 rounded-lg shadow md:flex-row md:w-[800px] hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700">
@@ -33,7 +34,7 @@ const FriendCard: FC<FriendCardProps> = (props) => {
         <>
         <ViewCard profile={props.profile}/> 
         <div className="flex-grow"></div>
-        <FriendButton state={editState} toggleState={onEditClick} profile={newProfile}></FriendButton>
+        <FriendButton id={props.id} state={editState} toggleState={onEditClick} profile={newProfile}></FriendButton>
         </>
       )}
       
@@ -41,7 +42,7 @@ const FriendCard: FC<FriendCardProps> = (props) => {
         <>
         <EditCard profile={props.profile} callback={onInputChange}/> 
         <div className="flex-grow"></div>
-        <FriendButton state={editState} toggleState={onEditClick} profile={newProfile}></FriendButton>
+        <FriendButton id={props.id} state={editState} toggleState={onEditClick} profile={newProfile}></FriendButton>
         </>
       )}
     </div>

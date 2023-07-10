@@ -5,7 +5,6 @@ import { FriendProfile } from "../../types/interface"
 interface UpdateButtonProps {
   updateCallback: MouseEventHandler //also needs to push to database
   deleteCallback: MouseEventHandler
-  profile?: FriendProfile 
 }
 
 const UpdateButton: FC<UpdateButtonProps> = (props) => {

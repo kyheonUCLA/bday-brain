@@ -15,7 +15,7 @@ export interface FriendProfile {
 	name: string
 	pic: string
 	birthday: Date
-	age: number
+	age: number | null
 	phone: string
 	bio: string
 	socials?: {

@@ -1,7 +1,9 @@
 import { FC, useState, useEffect } from "react"
+import FriendContext from "../contexts/FriendContext"
 
 import { FriendProfile, UserProfile } from "../types/interface"
-import FriendCard from "../components/Cards/FriendCard";
+import FriendCard from "../components/Cards/FriendCard"
+import AddButton from "../components/Buttons/AddButton"
 
 const friendsExample = [
   {
@@ -64,7 +66,31 @@ const friendsExample = [
 const ProfilePage: FC = () => {
 	const [user, setUser] = useState<UserProfile>() //need to write a function that fetches data from server
   const [friends, setFriends] = useState<FriendProfile[]>(friendsExample) //
-  
+
+  const onAddFriend = () => {
+    const newFriend = {
+      name: "John Smith",
+      phone: "(123) 333-4444",
+      pic: "https://i.pravatar.cc/250/250",
+      birthday: new Date(),
+      bio: "example",
+      age: 0,
+      editState: false
+    }
+    setFriends( (prev) => ( [...prev, newFriend] ) )
+  }
+
+  const t = [1, 2, 3, 4, 5, 6]
+  console.log(t.filter( (e, idx) => idx !== 4))
+
+  console.log(t.splice(3, 1))
+
+  const onDeleteFriend = (id: number) => {
+    console.log(friends)
+    setFriends( (prev) => (prev.filter( (e,idx) => idx !== id)) )
+    console.log(friends.splice(id, 1))
+
+  }
 	
 	useEffect(() => {
     setFriends(friendsExample)
@@ -73,11 +99,16 @@ const ProfilePage: FC = () => {
 
 	return (
 		<div id="profile-page-div" className="flex flex-col items-center bg-yellow-500">
+      <FriendContext.Provider value={ {onDeleteFriend: onDeleteFriend} }>
 			{
 				friends.map((friend, idx) => {return (
-          <FriendCard key={idx} profile={friend}/>
+          <FriendCard key={idx} id={idx} profile={friend}/>
 				)})
 			}
+      </FriendContext.Provider>
+      <br></br>
+      <AddButton callback={onAddFriend} />
+      <br></br>
 		</div>
 	)
 }
