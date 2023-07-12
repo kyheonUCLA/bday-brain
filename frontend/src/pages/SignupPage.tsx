@@ -32,8 +32,26 @@ const SignupPage: FC = () => {
 			password1: passwordElement1.value.trim(), 
 			password2: passwordElement2.value.trim()
 		})
-		console.log(formState)
-		setFormErrors(getSignupErrors())
+		//setFormErrors(getSignupErrors())
+		
+		sendSignupData(formState)
+	}
+
+	const sendSignupData = async (data: SignupFormState): Promise<void> => {
+		console.log(data)
+		try {
+			const response = await fetch('http://localhost:5050/app/api/user/', {
+				method: 'POST',
+				headers: {
+					'Content-Type': 'application/json',
+				},
+				body: JSON.stringify(data),
+			})
+			const fromServer: any = await response.json()
+			console.log(fromServer)
+		} catch (error) {
+			console.error('Error fetching test data:')
+		}
 	}
 
 	/*

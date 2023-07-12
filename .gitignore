@@ -24,7 +24,7 @@ frontend/yarn-error.log*
 ############# BACKEND FILES #############
 # dependencies
 backend/node_modules
-
+backend/.env
 
 
 # misc 

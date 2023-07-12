@@ -12,3 +12,5 @@ const startServer = async () => {
 };
 
 startServer();
+
+// run server with npx nodemon server.ts

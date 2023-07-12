@@ -12,3 +12,4 @@ const testController = {
 };
 
 export default testController;
+

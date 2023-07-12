@@ -1,5 +1,6 @@
 
 import { FC, MouseEvent, useState, useEffect } from "react"
+import { useNavigate } from "react-router-dom"
 
 // Custom imports
 import HorizontilNavbar from "../components/Navbars/HorizontilNavbar"
@@ -11,8 +12,6 @@ interface LoginFormState {
   username: string
   password: string
 }
-
-
 
 
 const LoginPage: FC = () => {
@@ -27,18 +26,23 @@ const LoginPage: FC = () => {
       username: usernameElement.value.trim(), 
       password: passwordElement.value.trim()
     })
-    fetchAuthData()
 	}
 
-  const fetchAuthData = async (): Promise<void> => {
-    try {
-      const response = await fetch('http://localhost:5050/app/api/auth/')
-      const jsonData: AuthData = await response.json()
-      console.log(jsonData)
-    } catch (error) {
-      console.error('Error fetching test data:');
-    }
-  };
+  const getUserData = async (data: LoginFormState): Promise<void> => {
+		console.log(data)
+		try {
+			const response = await fetch('http://localhost:5050/app/api/user/', {
+				method: 'GET',
+				headers: {
+					'Content-Type': 'application/json',
+				}
+			})
+			const fromServer: any = await response.json()
+			console.log(fromServer)
+		} catch (error) {
+			console.error('Error fetching test data:')
+		}
+	}
 
   const getLoginErrors = () => {
 		const errors: FormError[] = []
@@ -49,9 +53,12 @@ const LoginPage: FC = () => {
 	}
 
   useEffect( () => {
+    if (formState.username.length > 0 && formState.password.length > 0) {
+      getUserData(formState)
+    }
+
     console.log(formState)
     formErrors.length > 0 ? console.error(formErrors[0]) : console.log("No errors in Login") 
-    
     setFormErrors(getLoginErrors())
   }, [formState])
 
